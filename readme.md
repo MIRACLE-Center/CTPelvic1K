@@ -31,10 +31,12 @@ the images, annotations, codes, and trained baseline models at this repository.
 
 For more information about **CTPelvic1K** dataset, please read the following paper:
 
-`Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
-S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv preprint arXiv:**** (2021).`
+```
+Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
+S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv preprint arXiv:**** (2021).
+```
 
-Please also cite this paper if you are using **CTPelvic1K** dataset for your research!
+Please also cite this paper if you are using **CTPelvic1K** dataset for your research! **CTPelvic1K** dataset and trained models can be assessed from `Baiduyun Link`.
 
 Overview of our large-scale CT Pelvic dataset (CTPelvic1K) is shown in Table 1.
 
@@ -42,6 +44,8 @@ Overview of our large-scale CT Pelvic dataset (CTPelvic1K) is shown in Table 1.
 
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other further applications (surgical reduction). 
 If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
+
+
 
 # Getting Started 
 All the commands in this section assume that you are in a terminal and your working directory is the `CTPelvic1K` folder 
