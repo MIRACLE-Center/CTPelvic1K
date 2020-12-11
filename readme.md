@@ -38,12 +38,19 @@ S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and
 
 Please also cite this paper if you are using **CTPelvic1K** dataset for your research! **CTPelvic1K** dataset and trained models can be assessed from `Baiduyun Link`.
 
-Overview of our large-scale CT Pelvic dataset (CTPelvic1K) is shown in Table 1.
+---
 
-![](images/dataset.png)
+Overview of our large-scale CT Pelvic dataset (CTPelvic1K) and some pelvic CT image examples with various conditions 
+are shown in Table 1 and Fig.1.
 
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other further applications (surgical reduction). 
 If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
+
+![](images/dataset.png)
+
+![](images/ctplevic.png)
+
+
 
 
 
