@@ -1,60 +1,57 @@
-# Introduction 
-***Submission to IPCAI 2021.*** url for arxiv
+# Introduction of CTPelvic1K Dataset
+To build a comprehensive pelvic CT dataset that can replicate practical appearance variations, we curate a 
+large dataset of pelvic CT images (**CTPelvic1K** with 1,184 3D volumes, 320K CT slices) using the following seven sources. 
 
-***Purpose***: Pelvic bone segmentation in CT has always been an essential
-step in clinical diagnosis and surgery planning of pelvic bone diseases. Existing
-methods for pelvic bone segmentation are either hand-crafted or semi-automatic
-and achieve limited accuracy when dealing with image appearance variations due
-to the multi-site domain shift, the presence of contrasted vessels, coprolith and
-chyme, bone fractures, low dose, metal artifacts, etc. Due to the lack of a large-scale
-pelvic CT dataset with annotations, deep learning methods are not fully explored.
+ - *CLINIC and CLINIC-metal.* These two sub-datasets are related to pelvic fractures collected from an orthopedic 
+hospital we collaborate with. CLINIC is collected  from  preoperative  images  without  metal  artifact, 
+and  CLINIC-metal  ismainly collected from postoperative images with metal artifacts.
+- *KITS19.* This sub-dataset is from the Kits19 challenge <sup>13</sup> which is related to
+kidney and kidney tumor segmentation.
+- *CERVIX and ABDOMEN.* These two sub-datasets are from the Multi-Atlas
+Labeling Beyond the Cranial Vault - Workshop and Challenge <sup>3</sup>. They are all
+multi-organ segmentation datasets for different body regions originally.
+- *MSD T10.* This sub-dataset comes from the 10th sub-dataset of Medical Segmentation Decathlon <sup>31</sup> 
+and features colon tumor segmentation.
+- *COLONOG.* This sub-dataset comes from the CT COLONOGRAPHY <sup>16</sup>
+dataset related to a CT colonography trial. It has prone and supine DICOM images
+for each patient. We randomly select one of two positions, which have the similar
+information, of each patient to our large dataset.
 
-***Methods***: In this paper, we aim to bridge the data gap by curating a large pelvic CT
-dataset pooled from multiple sources and different manufacturers, including 1, 184
-CT volumes and over 320, 000 slices with different resolutions and a variety of the
-above-mentioned appearance variations. Then we propose for the first time, to the
-best of our knowledge, to learn a deep multi-class network for segmenting lumbar
-spine, sacrum, left hip, and right hip, from multiple-domain images simultaneously
-to obtain more effective and robust feature representations. Finally, we introduce a
-post-processing tool based on the signed distance function (SDF) to eliminate false
-predictions while retaining correctly predicted bone fragments. 
+KITS19, CERVIX, ABDOMEN, MSD T10, COLONOG, CLINIC, and CLINICmetal are curated separately from different 
+sites and sources and hence have a diverse range of spacing and FOV. The overview of our large-scale CT 
+Pelvic dataset (**CTPelvic1K**) and some pelvic CT image examples with various conditions 
+are shown in Table 1 and Fig.1. At the same time, chyme, vascular sclerosis, coprolith, and other situations
+often encountered in the clinic appear in these sub-datasets. Among them, the data of COLONOG, CLINIC, 
+and CLINIC-metal are stored in a DICOM format, so we can access the information about scanner manufacturer of these 
+ sub-datasets.
 
-***Results***: Extensive
-experiments on our dataset demonstrate the effectiveness of our automatic method,
-achieving an average Dice of 0.987 for a metal-free volume. SDF post-processor
-yields a decrease of 10.5% in hausdorff distance by maintaining important bone
-fragments in post-processing phase. 
+![](images/dataset.png)
 
-***Conclusion***: We believe this large-scale dataset
-will promote the development of the whole community and plan to open source
-the images, annotations, codes, and trained baseline models at this repository.
+![](images/ctplevic.png)
 
-For more information about **CTPelvic1K** dataset, please read the following paper:
+---
+
+For more information about **CTPelvic1K** dataset, please read the following paper. Please also cite this paper if you are using **CTPelvic1K** dataset for your research!
 
 ```
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
 S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv preprint arXiv:**** (2021).
 ```
 
-Please also cite this paper if you are using **CTPelvic1K** dataset for your research! **CTPelvic1K** dataset and trained models can be assessed from `Baiduyun Link`.
+ We believe this large-scale dataset will promote the development of the whole community and plan to open source
+the images, annotations, and trained baseline models at this link.
+ 
+```
+Baiduyun Link. passwd: ****
+```
 
----
-
-Overview of our large-scale CT Pelvic dataset (CTPelvic1K) and some pelvic CT image examples with various conditions 
-are shown in Table 1 and Fig.1.
-
-This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other further applications (surgical reduction). 
-If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
-
-![](images/dataset.png)
-
-![](images/ctplevic.png)
+This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other 
+further applications. If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
 
 
 
 
-
-# Getting Started 
+# Getting Started for Code
 All the commands in this section assume that you are in a terminal and your working directory is the `CTPelvic1K` folder 
 (the one that has all the subfolders like `dataset_conversion`, `evaluation`, ...)
 
@@ -154,7 +151,7 @@ $ command_6 = f'python run/run_training.py 3d_lowres nnUNetTrainer {TASK} {FOLD}
 $ command_7 = f'python run/run_training.py 3d_cascade_fullres nnUNetTrainerCascadeFullRes {TASK} {FOLD} --gpu {GPU}'
 ```
 
-nnU-Net uses three different U-Net models and can automatically choose which of them to use. We can try them all on 
+nnU-Net <sup>2</sup> uses three different U-Net models and can automatically choose which of them to use. We can try them all on 
 our **CTPelvic1K** dataset.
 
 Trained models are stored in `network_training_output_dir` (specified in `paths.py`).
@@ -267,14 +264,21 @@ Large fragments near the anatomical structure are kept with SDF post-processing 
 
 
 ## 5 Acknowledgement
-Our code is mainly rewritten based on nnU-Net's <sup>2,3</sup> code. Thanks to Febian, et al.'s excellent work, 
+Our code is mainly rewritten based on nnU-Net's <sup>2, 4</sup> code. Thanks to Febian, et al.'s excellent work, 
 which is a big contribution to the community. 
 
 ## 6 References
-<sup>1</sup> http://medicaldecathlon.com/  \
-<sup>2</sup> https://github.com/MIC-DKFZ/nnUNet\
-<sup>3</sup> Fabian Isensee, Paul F. Jäger, Simon A. A. Kohl, Jens Petersen, Klaus H. Maier-Hein "Automated Design of Deep Learning 
-Methods for Biomedical Image Segmentation" arXiv preprint arXiv:1904.08128 (2020).
+<sup>1</sup> http://medicaldecathlon.com/  
+<sup>2</sup> https://github.com/MIC-DKFZ/nnUNet  
+<sup>3</sup> https://www.synapse.org/#!Synapse:syn3193805/wiki/89480    
+<sup>4</sup> Fabian Isensee, Paul F. Jäger, Simon A. A. Kohl, Jens Petersen, Klaus H. Maier-Hein "Automated Design of Deep Learning 
+Methods for Biomedical Image Segmentation" arXiv preprint arXiv:1904.08128 (2020). \
+<sup>13</sup> Heller, N., Sathianathen, N., et al.: The kits19 challenge data: 300 kidney tumor cases with clinical context, CT semantic segmentations, and surgical outcomes.
+arXiv:1904.00445 (2019). \
+<sup>16</sup> Johnson, C.D., Chen, M.H., et al.: Accuracy of CT colonography for detection of large
+adenomas and cancers. New England Journal of Medicine 359(12), 1207{1217 (2008). \
+<sup>31</sup> Simpson, A.L., Antonelli, M., et al.: A large annotated medical image dataset for the
+development and evaluation of segmentation algorithms. arXiv:1902.09063 (2019).
 
 ## 7 Citation
 If you use our CTPelvic1K dataset, please cite our paper:
