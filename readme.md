@@ -35,7 +35,7 @@ For more information about **CTPelvic1K** dataset, please read the following pap
 
 ```
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
-S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv preprint arXiv:**** (2021).
+S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
 ```
 
  We believe this large-scale dataset will promote the development of the whole community and plan to open source
@@ -285,5 +285,5 @@ development and evaluation of segmentation algorithms. arXiv:1902.09063 (2019).
 If you use our CTPelvic1K dataset, please cite our paper:
 ```
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
-S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv preprint arXiv:**** (2021).
+S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
 ```
