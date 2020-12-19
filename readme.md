@@ -42,8 +42,8 @@ S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and
 the images, annotations, and trained baseline models at this link.
  
 ```
-Link：https://pan.baidu.com/s/1BEL4AnmEcAysHbNrQGBUHQ 
-Passwd：4z0g 
+Link：https://pan.baidu.com/s/1iFk21EWAN1nWaJTuYgSUwQ 
+Passwd：mdv7 
 ```
 
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other 
@@ -185,7 +185,8 @@ $ command_11 = f'python run/run_training.py 3d_cascade_fullres nnUNetTrainerCasc
 ```
 ### 3.3 Testing 
 You can use trained models to predict test data. In order to be able to do so the test data must be provided in the 
-same format as the training data.
+same format as the training data. If you want to use the trained models in the Link above, you should modify the path in 
+the value of key, 'init', in the dict saved as 'model_best.model.pkl'.
 
 
 
