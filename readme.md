@@ -42,9 +42,10 @@ S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and
 the images, annotations, and trained baseline models at this link.
  
 ```
-Link：https://pan.baidu.com/s/1iFk21EWAN1nWaJTuYgSUwQ 
-Passwd：mdv7 
+Link：https://pan.baidu.com/s/1fSePADF2vfYWySuhvX-h0A 
+Passwd：1isv
 ```
+
 
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other 
 further applications. If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
