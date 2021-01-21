@@ -40,15 +40,23 @@ Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun L
 S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
 ```
 
- We believe this large-scale dataset will promote the development of the whole community and plan to open source
-the images, annotations, and trained baseline models at this link.
+We believe this large-scale dataset will promote the development of the whole community and plan to open source
+the images, annotations, and trained baseline models at Baiduyun link. 
+
+For users who have difficulty accessing Baiduyun, we map the annotations back to original sub-datasets (1-5). 
+You can download the annotations, 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' which is corresponding to 
+sub-dataset1-5's raw images, from google drive. You can download raw images from their original website to 
+speed up the progress.
+
+For dataset2 in our 'CTPelvic1K_dataset2_mask_mappingback.tar.gz', the naming format is "NumberofPatient_NumberofSequence_*.nii.gz".
  
 ```
-Link：https://pan.baidu.com/s/1IfmAovKZAqlgnadocaWETQ 
-Passwd：38pu 
+Baiduyun link of our processed sub-datasets and annotations:
+    https://pan.baidu.com/s/1IfmAovKZAqlgnadocaWETQ
+    Passwd：38pu 
 
-Google Drive link of 'CLINIC' and 'CLINIC-metal':
-https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing
+Google Drive link of 'CLINIC', 'CLINIC-metal' and 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' :
+    https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing
 ```
 
 
