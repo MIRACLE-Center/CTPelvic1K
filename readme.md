@@ -52,8 +52,8 @@ For dataset2 in our 'CTPelvic1K_dataset2_mask_mappingback.tar.gz', the naming fo
  
 ```
 Baiduyun link of our processed sub-datasets and annotations:
-    https://pan.baidu.com/s/1IfmAovKZAqlgnadocaWETQ
-    Passwd：38pu 
+    https://pan.baidu.com/s/1rALdH6KNvbTZHlCIIaHQLQ 
+    Passwd：bun1 
 
 Google Drive link of 'CLINIC', 'CLINIC-metal' and 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' :
     https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing
