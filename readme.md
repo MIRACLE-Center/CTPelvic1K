@@ -1,3 +1,11 @@
+# 2021-02-08 update 
+In our recent follow-up work, we found that, during the database construction, some tiny outlier annotations were not well 
+removed, which mainly have an effect on the Hausdorff distance metric.
+
+Now, we have corrected these errors and re-evaluated the segmentation performance using the same metrics. 
+We found that there are no changes regarding our findings, but there are some changes in the numerical values of the metrics. 
+We will updated the metrics in the latest version of our paper. 
+ 
 # Introduction of CTPelvic1K Dataset
 
 
