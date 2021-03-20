@@ -6,7 +6,7 @@ from utils import _sitk_Image_reader, _sitk_image_writer, save_pkl
 from functools import partial
 from multiprocessing import Pool
 from collections import OrderedDict
-from postprocessing import oldsdf_post_processor, maximum_connected_region_post_processor
+from postprocessing import newsdf_post_processor, maximum_connected_region_post_processor
 
 def write2singlefile(content, savepath):
     with open(savepath,'a+') as f:
@@ -56,7 +56,7 @@ def computeQualityMeasures_oneCases(name, pred_path, target_path_file, postproce
     
     """
     if postprocessor == 'sdf':
-        pred = oldsdf_post_processor(pred, sdf_th=sdf_th, region_th = region_th)
+        pred = newsdf_post_processor(pred, sdf_th=sdf_th, region_th = region_th)
     elif postprocessor == 'mcr':
         pred = maximum_connected_region_post_processor(pred, region_th=region_th)
     elif postprocessor is None:
@@ -235,10 +235,10 @@ if __name__ == '__main__':
                       f'Task22_ipcai2021_T__nnUNet_without_mirror_IPCAI2021_deeps_exclusion__nnUNet_without_mirror_IPCAI2021_deeps_exclusion__fold{fo}_3dcascadefullres_pred',
             target_path_file=tarPath,
             subdataset='all',
-            postprocessor='mcr',
+            postprocessor='sdf',
             thread=64,
             region_th=2000,
-            sdf_th=0.25)
+            sdf_th=35)
 
         t_end = time.time()
         print(f'time consuming {t_end-t_begin} s ...')

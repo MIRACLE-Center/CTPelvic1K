@@ -32,75 +32,97 @@ def sdf_func(segImg):
     seg[seg > 0.4999] = 1  # convert sdf back to numpy array, and clip 0.5 above to 1 (inside)
     return seg
 
-def oldsdf_post_processor(pred, main_region_th = 100000, sdf_th = 0.2, region_th = 2000):
-    pred_single = pred.copy()
-    pred_single[pred>1] = 1
+def raw_sdf_func(segImg):
+    Sdf = sitk.SignedMaurerDistanceMap(segImg, insideIsPositive=False, squaredDistance=False)
+    seg = sitk.GetArrayFromImage(Sdf)
 
-    connected_label = label(pred_single, connectivity=pred_single.ndim)
-    props = regionprops(connected_label)
-    sorted_Props = sorted(props, key=lambda e: e.__getitem__('area'), reverse=True)
-    mask = np.zeros_like(pred)
+    return seg
 
-    index = None
+def newsdf_post_processor(pred, main_region_th = 100000, sdf_th = 35, region_th = 2000):
+    pred_test = pred.copy()
+    mask_whole = np.zeros_like(pred_test)
+    for anot in range(1, pred.max() + 1):
+        print('i', anot)
+        pred_single = np.zeros_like(pred_test)
+        pred_single[pred_test == anot] = 1
 
-    for i in range(len(sorted_Props)):
-        if sorted_Props[i]['area'] > main_region_th or i==0:#zhu xin guer
-        # if i==0:#zhu xin guer
-            mask[connected_label==sorted_Props[i]['label']] = 1
-        else:
-            index = i
-            break
+        connected_label = label(pred_single, connectivity=pred_single.ndim)
+        props = regionprops(connected_label)
+        sorted_Props = sorted(props, key=lambda e: e.__getitem__('area'), reverse=True)
 
-    if index == None:
-        return pred
-
-
-    sdf_distance_mask = sdf_func(sitk.GetImageFromArray(mask))
-    sdf_mask =sdf_distance_mask.copy()
-    sdf_mask[sdf_mask > sdf_th] = 1
-    sdf_mask = sdf_mask.astype('uint16')
-    if False:
-        visual = pred_single + sdf_mask*7
-        _sitk_image_writer(visual, meta, path.replace('.nii.gz','_visual.nii.gz'))
-    else:
-        pass
-
-    for i in range(index, len(sorted_Props)):
-        if sorted_Props[i]['area'] < region_th:
-            break
-        else:
-            part = np.zeros_like(pred)
-            part[connected_label==sorted_Props[i]['label']]=1
-
-            if (part*sdf_mask).sum() >0:
-                mask[connected_label==sorted_Props[i]['label']] = 1
+        mask_single = np.zeros_like(pred_test)
+        index = None
+        for idx_r, i in enumerate(range(len(sorted_Props))):
+            print('ii', i)
+            if sorted_Props[i]['area'] > main_region_th or idx_r == 0:
+                print(sorted_Props[i]['area'])
+                mask_single[connected_label == sorted_Props[i]['label']] = 1
             else:
-                pass
+                # only keep region bigger than main_region_th, here.
+                index = i
+                break
+        if index == None:
+            mask_whole[mask_single > 0] = 1
+            continue
 
-    result = mask*pred
+        ### second stage
+        sdf_distance_mask_single = raw_sdf_func(sitk.GetImageFromArray(mask_single))
+        sdf_mask_single = np.zeros_like(pred)
+        sdf_mask_single[sdf_distance_mask_single < sdf_th] = 1
+        sdf_mask_single = sdf_mask_single.astype('uint16')
+
+        # if True:
+        #     sdf_mask_single_2save = sdf_mask_single.copy() * 5
+        #     sdf_mask_single_2save[pred > 0] = pred[pred > 0]
+        #     path = '/home1/pbliu/all_data/nnUNet/IL_test_tmp/2017_05163189_SongSiBao_crop_mask_4label.nii.gz'
+        #     _, _, meta = _sitk_Image_reader(path)
+        #     print('name:', '_visual{}.nii.gz'.format(anot))
+        #     _sitk_image_writer(sdf_mask_single_2save, meta, path.replace('.nii.gz', '_visual{}.nii.gz'.format(anot)))
+        # else:
+        #     pass
+
+        for i in range(index, len(sorted_Props)):
+            print('iii', i)
+            if sorted_Props[i]['area'] < region_th:
+                break
+            else:
+                part = np.zeros_like(pred_test)
+                part[connected_label == sorted_Props[i]['label']] = 1
+                if (part * sdf_mask_single).sum() > 0:
+                    mask_single[connected_label == sorted_Props[i]['label']] = 1
+
+        mask_whole[mask_single > 0] = 1
+    result = mask_whole * pred
     return result
 
 
-def maximum_connected_region_post_processor(pred, region_th = 2000):
+def maximum_connected_region_post_processor(pred, region_th = 100000):
     """
     pred: multi-label
     return: multi-label
     """
-    pred_single = pred.copy()
-    pred_single[pred>1] = 1
+    pred_test = pred.copy()
+    mask_whole = np.zeros_like(pred)
 
-    connected_label = label(pred_single, connectivity=pred_single.ndim)
-    props = regionprops(connected_label)
-    sorted_Props = sorted(props, key=lambda e: e.__getitem__('area'), reverse=True)
-    mask = np.zeros_like(pred)
-    for i in range(len(sorted_Props)):
-        print(sorted_Props[i]['area'],sorted_Props[i]['label'])
-        if sorted_Props[i]['area']>region_th or i==0: # i==0, make sure the biggest area can be keeped.
-            mask[connected_label==sorted_Props[i]['label']] = 1
-        else:
-            pass
+    for i in range(1, pred.max()+1):
+        pred_single = np.zeros_like(pred_test)
+        pred_single[pred_test==i] = 1
 
-    return mask*pred
+        connected_label = label(pred_single, connectivity=pred_single.ndim)
+        props = regionprops(connected_label)
+        sorted_Props = sorted(props, key=lambda e: e.__getitem__('area'), reverse=True)
+
+        mask_single = np.zeros_like(pred)
+        for i in range(len(sorted_Props)):
+            # print(sorted_Props[i]['area'],sorted_Props[i]['label'])
+            if sorted_Props[i]['area']>region_th or i==0: # i==0, make sure the biggest area can be keeped.
+                mask_single[connected_label==sorted_Props[i]['label']] = 1
+            else:
+                pass
+
+        mask_whole[mask_single>0]=1
+
+    return mask_whole*pred
 
 if __name__ == '__main__':
     """
@@ -111,7 +133,7 @@ if __name__ == '__main__':
         _, image, meta = _sitk_Image_reader(path+'/'+name)
         print(name, image.shape)
         if post=='sdf':
-            post_image = oldsdf_post_processor(pred=image, region_th=2000, sdf_th=0.25)
+            post_image = newsdf_post_processor(pred=image, region_th=2000, sdf_th=35)
         elif post=='mcr':
             post_image = maximum_connected_region_post_processor(image, region_th=100000)
         else:

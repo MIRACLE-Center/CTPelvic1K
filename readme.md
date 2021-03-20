@@ -5,39 +5,38 @@ removed, which mainly have an effect on the Hausdorff distance metric.
 Now, we have corrected these errors and re-evaluated the segmentation performance using the same metrics. 
 We found that there are no changes regarding our findings, but there are some changes in the numerical values of the metrics. 
 We will updated the metrics in the latest version of our paper. 
- 
+
+
+
 # Introduction of CTPelvic1K Dataset
-
-
 To build a comprehensive pelvic CT dataset that can replicate practical appearance variations, we curate a 
 large dataset of pelvic CT images (**CTPelvic1K** with 1,184 3D volumes, 320K CT slices) using the following seven sources. 
 
- - *CLINIC and CLINIC-metal.* These two sub-datasets are related to pelvic fractures collected from an orthopedic 
+![](images/dataset.png)
+
+![](images/ctplevic.png)
+- *(Collected) CLINIC and CLINIC-metal.* These two sub-datasets are related to pelvic fractures collected from an orthopedic 
 hospital we collaborate with. CLINIC is collected  from  preoperative  images  without  metal  artifact, 
 and  CLINIC-metal  ismainly collected from postoperative images with metal artifacts.
-- *KITS19.* This sub-dataset is from the Kits19 challenge <sup>13</sup> which is related to
+- *(Public) KITS19.* This sub-dataset is from the Kits19 challenge <sup>13</sup> which is related to
 kidney and kidney tumor segmentation.
-- *CERVIX and ABDOMEN.* These two sub-datasets are from the Multi-Atlas
+- *(Public) CERVIX and ABDOMEN.* These two sub-datasets are from the Multi-Atlas
 Labeling Beyond the Cranial Vault - Workshop and Challenge <sup>3</sup>. They are all
 multi-organ segmentation datasets for different body regions originally.
-- *MSD T10.* This sub-dataset comes from the 10th sub-dataset of Medical Segmentation Decathlon <sup>31</sup> 
+- *(Public) MSD_T10.* This sub-dataset comes from the 10th sub-dataset of Medical Segmentation Decathlon <sup>31</sup> 
 and features colon tumor segmentation.
-- *COLONOG.* This sub-dataset comes from the CT COLONOGRAPHY <sup>16</sup>
+- *(Public) COLONOG.* This sub-dataset comes from the CT COLONOGRAPHY <sup>16</sup>
 dataset related to a CT colonography trial. It has prone and supine DICOM images
 for each patient. We randomly select one of two positions, which have the similar
 information, of each patient to our large dataset.
 
-KITS19, CERVIX, ABDOMEN, MSD T10, COLONOG, CLINIC, and CLINICmetal are curated separately from different 
+KITS19, CERVIX, ABDOMEN, MSD T10, COLONOG, CLINIC, and CLINIC-metal are curated separately from different 
 sites and sources and hence have a diverse range of spacing and FOV. The overview of our large-scale CT 
 Pelvic dataset (**CTPelvic1K**) and some pelvic CT image examples with various conditions 
 are shown in Table 1 and Fig.1. At the same time, chyme, vascular sclerosis, coprolith, and other situations
 often encountered in the clinic appear in these sub-datasets. Among them, the data of COLONOG, CLINIC, 
 and CLINIC-metal are stored in a DICOM format, so we can access the information about scanner manufacturer of these 
  sub-datasets.
-
-![](images/dataset.png)
-
-![](images/ctplevic.png)
 
 ---
 
@@ -47,32 +46,39 @@ For more information about **CTPelvic1K** dataset, please read the following pap
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
 S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
 ```
-
-We believe this large-scale dataset will promote the development of the whole community and plan to open source
-the images, annotations, and trained baseline models at Baiduyun link. 
-
-For users who have difficulty accessing Baiduyun, we map the annotations back to original sub-datasets (1-5). 
-You can download the annotations, 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' which is corresponding to 
-sub-dataset1-5's raw images, from google drive. You can download raw images from their original website to 
-speed up the progress.
-
-For dataset2 in our 'CTPelvic1K_dataset2_mask_mappingback.tar.gz', the naming format is "NumberofPatient_NumberofSequence_*.nii.gz".
- 
-```
-Baiduyun link of our processed sub-datasets and annotations:
-    https://pan.baidu.com/s/1rALdH6KNvbTZHlCIIaHQLQ 
-    Passwd：bun1 
-
-Google Drive link of 'CLINIC', 'CLINIC-metal' and 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' :
-    https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing
-```
-
-
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other 
 further applications. If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
 
+# Downloading the CTPelvic1K Dataset
+In order to facilitate everyone to download the CTPelvic1K and to respect the sub-datasets used in our dataset that have 
+been open-sourced. We upload our work (**annotations and new collected clinical data**) to a single link and also 
+attach the links of other **public** datasets used in our whole dataset.
+
+### Annotations and new collected clinical data:
+Download link: [https://zenodo.org/record/4588403#.YEyLq_0zaCo](https://zenodo.org/record/4588403#.YEyLq_0zaCo)
+    
+Because our original annotations are made based on processed dataset (the unrelated areas outside the pelvis are removed), 
+except dataset6 (CLINIC) and dataset7 (CLINIC-metal), we map the annotations back to suit the size of original datasets (1-5). E.g. 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' 
+is corresponding to dataset1-5's raw images. For files saved in 'CTPelvic1K_dataset2_mask_mappingback.tar.gz', the naming format is "NumberofPatient_NumberofSequence_*.nii.gz".
 
 
+[//]: # (Google Drive link of 'CLINIC', 'CLINIC-metal' and 'CTPelvic1K_dataset1-5_mask_mappingback.tar.gz' :
+    https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing)
+
+### Public data:
+Links to download raw dataset of sub-dataset1-5 used in our CTPelvic1K:
+
+sub-dataset1: [ABDOMEN](https://www.synapse.org/#!Synapse:syn3376386);
+ 
+sub-dataset2: [COLONOG](https://wiki.cancerimagingarchive.net/display/Public/CT+COLONOGRAPHY#3539213deca74644fb24f819129e8bb8f2a3658);
+ 
+sub-dataset3: [MSD_T10](https://drive.google.com/file/d/1m7tMpE9qEcQGQjL_BdMD-Mvgmc44hG1Y/view?usp=sharing);
+ 
+sub-dataset4: [KITS19](https://github.com/neheller/kits19);
+ 
+sub-dataset5: [CERVIX](https://www.synapse.org/#!Synapse:syn3378972).
+
+Another reason we recommend downloading raw dataset is that the annotations of other bone anatomy are coming. We will merge them all into one file in the future.
 
 # Getting Started for Code
 All the commands in this section assume that you are in a terminal and your working directory is the `CTPelvic1K` folder 
