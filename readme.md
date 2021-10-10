@@ -44,14 +44,14 @@ For more information about **CTPelvic1K** dataset, please read the following pap
 
 ```
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
-S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
+S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv:2012.08721 (2020).
 ```
 This repository is still work in progress. Annotations will continue to be enriched with other bone structures and other 
 further applications. If you encounter any problems while using **CTPelvic1K** dataset, please let us know.
 
 # Downloading the CTPelvic1K Dataset
 In order to facilitate everyone to download the CTPelvic1K and to respect the sub-datasets used in our dataset that have 
-been open-sourced. We upload our work (**annotations and new collected clinical data**) to a single link and also 
+been open-sourced we upload our work (**annotations and new collected clinical data**) to a single link and also 
 attach the links of other **public** datasets used in our whole dataset.
 
 ### Annotations and new collected clinical data:
@@ -66,9 +66,9 @@ is corresponding to dataset1-5's raw images. For files saved in 'CTPelvic1K_data
     https://drive.google.com/drive/folders/1i5bRyc4Sr1hHQuyPXi16Kc9ZzFal_JeE?usp=sharing)
 
 ### Public data:
-Links to download raw dataset of sub-dataset1-5 used in our CTPelvic1K:
+Links to download the raw dataset of sub-dataset1 to 5 used in our CTPelvic1K:
 
-sub-dataset1: [ABDOMEN](https://www.synapse.org/#!Synapse:syn3376386);
+sub-dataset1: [ABDOMEN](https://www.synapse.org/#!Synapse:syn3376386);<sup>3</sup>
  
 sub-dataset2: [COLONOG](https://wiki.cancerimagingarchive.net/display/Public/CT+COLONOGRAPHY#3539213deca74644fb24f819129e8bb8f2a3658);
  
@@ -76,9 +76,9 @@ sub-dataset3: [MSD_T10](https://drive.google.com/file/d/1m7tMpE9qEcQGQjL_BdMD-Mv
  
 sub-dataset4: [KITS19](https://github.com/neheller/kits19);
  
-sub-dataset5: [CERVIX](https://www.synapse.org/#!Synapse:syn3378972).
+sub-dataset5: [CERVIX](https://www.synapse.org/#!Synapse:syn3378972).<sup>3</sup>
 
-Another reason we recommend downloading raw dataset is that the annotations of other bone anatomy are coming. We will merge them all into one file in the future.
+Another reason we recommend downloading the raw datasets is that the annotations of other bone anatomy are coming. We will merge them all into one file in the future.
 
 # Getting Started for Code
 All the commands in this section assume that you are in a terminal and your working directory is the `CTPelvic1K` folder 
@@ -103,7 +103,7 @@ And all commands are already writen in `CTPelvic1K/nnunet/runs.py`.
 
 ## 1 Set paths 
 Have a look at the file `CTPelvic1K/nnunet/paths.py` and adapt it to your system by setting the paths where you 
-will store raw data, preprocessed data and trained models.
+will store the raw data, preprocessed data and trained models.
 
 ## 2 Preparing Datasets & Experiment Planning & Preprocessing
 
@@ -184,7 +184,6 @@ nnU-Net <sup>2</sup> uses three different U-Net models and can automatically cho
 our **CTPelvic1K** dataset.
 
 Trained models are stored in `network_training_output_dir` (specified in `paths.py`).
-
 
 #### 2D U-Net 
 `command_4`
@@ -291,28 +290,21 @@ $ command_18 = 'python ../save_evaluation_results2csv_Manu.py'
 
 Large fragments near the anatomical structure are kept with SDF post-processing but are removed by the MCR method.
 
-
-
 ## 5 Acknowledgement
-Our code is mainly rewritten based on nnU-Net's <sup>2, 4</sup> code. Thanks to Febian, et al.'s excellent work, 
-which is a big contribution to the community. 
+Our code is mainly rewritten based on nnU-Net's <sup>2, 4</sup> code. Thanks to Isensee et al.'s excellent work, which is a big contribution to the community. 
 
 ## 6 References
 <sup>1</sup> http://medicaldecathlon.com/  
 <sup>2</sup> https://github.com/MIC-DKFZ/nnUNet  
-<sup>3</sup> https://www.synapse.org/#!Synapse:syn3193805/wiki/89480    
-<sup>4</sup> Fabian Isensee, Paul F. Jäger, Simon A. A. Kohl, Jens Petersen, Klaus H. Maier-Hein "Automated Design of Deep Learning 
-Methods for Biomedical Image Segmentation" arXiv preprint arXiv:1904.08128 (2020). \
-<sup>13</sup> Heller, N., Sathianathen, N., et al.: The kits19 challenge data: 300 kidney tumor cases with clinical context, CT semantic segmentations, and surgical outcomes.
-arXiv:1904.00445 (2019). \
-<sup>16</sup> Johnson, C.D., Chen, M.H., et al.: Accuracy of CT colonography for detection of large
-adenomas and cancers. New England Journal of Medicine 359(12), 1207{1217 (2008). \
-<sup>31</sup> Simpson, A.L., Antonelli, M., et al.: A large annotated medical image dataset for the
-development and evaluation of segmentation algorithms. arXiv:1902.09063 (2019).
+<sup>3</sup> [10.7303/syn3193805](https://doi.org/10.7303/syn3193805): Create an account. Join the challenge to get access to the files. \
+<sup>4</sup> Isensee, F., Jäger P.F., et al.: Automated Design of Deep Learning  Methods for Biomedical Image Segmentation. [arXiv:1904.08128](https://arxiv.org/abs/1904.08128) (2020). \
+<sup>13</sup> Heller, N., Sathianathen, N., et al.: The KiTS19 Challenge Data: 300 Kidney Tumor Cases with Clinical Context, CT Semantic Segmentations, and Surgical Outcomes. [arXiv:1904.00445](https://arxiv.org/abs/1904.00445) (2019). \
+<sup>16</sup> Johnson, C.D., Chen, M.H., et al.: Accuracy of CT Colonography for Detection of Large Adenomas and Cancers. New England Journal of Medicine 359(12), 1207-1217. [10.1056/NEJMoa0800996](https://dx.doi.org/10.1056/NEJMoa0800996) (2008). \
+<sup>31</sup> Simpson, A.L., Antonelli, M., et al.: A large annotated medical image dataset for the development and evaluation of segmentation algorithms. [arXiv:1902.09063](https://arxiv.org/abs/1902.09063) (2019).
 
 ## 7 Citation
 If you use our CTPelvic1K dataset, please cite our paper:
 ```
 Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Li Xiao, Xinbao Wu, 
-S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv: 2012.08721 (2020).
+S.Kevin Zhou. Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. arXiv:2012.08721 (2020).
 ```
