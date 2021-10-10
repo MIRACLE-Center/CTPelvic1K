@@ -68,15 +68,15 @@ is corresponding to dataset1-5's raw images. For files saved in 'CTPelvic1K_data
 ### Public data:
 Links to download the raw dataset of sub-dataset1 to 5 used in our CTPelvic1K:
 
-sub-dataset1: [ABDOMEN](https://www.synapse.org/#!Synapse:syn3376386);<sup>3</sup>
+sub-dataset1: [ABDOMEN](https://www.synapse.org/#!Synapse:syn3376386)<sup>3</sup>
  
-sub-dataset2: [COLONOG](https://wiki.cancerimagingarchive.net/display/Public/CT+COLONOGRAPHY#3539213deca74644fb24f819129e8bb8f2a3658);
+sub-dataset2: [COLONOG](https://wiki.cancerimagingarchive.net/display/Public/CT+COLONOGRAPHY#3539213deca74644fb24f819129e8bb8f2a3658)
  
-sub-dataset3: [MSD_T10](https://drive.google.com/file/d/1m7tMpE9qEcQGQjL_BdMD-Mvgmc44hG1Y/view?usp=sharing);
+sub-dataset3: [MSD_T10](https://drive.google.com/file/d/1m7tMpE9qEcQGQjL_BdMD-Mvgmc44hG1Y/view?usp=sharing)
  
-sub-dataset4: [KITS19](https://github.com/neheller/kits19);
+sub-dataset4: [KITS19](https://github.com/neheller/kits19)
  
-sub-dataset5: [CERVIX](https://www.synapse.org/#!Synapse:syn3378972).<sup>3</sup>
+sub-dataset5: [CERVIX](https://www.synapse.org/#!Synapse:syn3378972)<sup>3</sup>
 
 Another reason we recommend downloading the raw datasets is that the annotations of other bone anatomy are coming. We will merge them all into one file in the future.
 
@@ -296,7 +296,7 @@ Our code is mainly rewritten based on nnU-Net's <sup>2, 4</sup> code. Thanks to 
 ## 6 References
 <sup>1</sup> http://medicaldecathlon.com/  
 <sup>2</sup> https://github.com/MIC-DKFZ/nnUNet  
-<sup>3</sup> [10.7303/syn3193805](https://doi.org/10.7303/syn3193805): Create an account. Join the challenge to get access to the files. \
+<sup>3</sup> Multi-Atlas Labeling Beyond the Cranial Vault - Workshop and Challenge. [10.7303/syn3193805](https://doi.org/10.7303/syn3193805) (2015). Create an account and join the challenge to get access to the files. \
 <sup>4</sup> Isensee, F., Jäger P.F., et al.: Automated Design of Deep Learning  Methods for Biomedical Image Segmentation. [arXiv:1904.08128](https://arxiv.org/abs/1904.08128) (2020). \
 <sup>13</sup> Heller, N., Sathianathen, N., et al.: The KiTS19 Challenge Data: 300 Kidney Tumor Cases with Clinical Context, CT Semantic Segmentations, and Surgical Outcomes. [arXiv:1904.00445](https://arxiv.org/abs/1904.00445) (2019). \
 <sup>16</sup> Johnson, C.D., Chen, M.H., et al.: Accuracy of CT Colonography for Detection of Large Adenomas and Cancers. New England Journal of Medicine 359(12), 1207-1217. [10.1056/NEJMoa0800996](https://dx.doi.org/10.1056/NEJMoa0800996) (2008). \
